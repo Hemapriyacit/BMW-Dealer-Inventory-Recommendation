@@ -2,9 +2,7 @@ import pandas as pd
 import numpy as np
 
 
-# -----------------------------------
-# 1. Load dataset
-# -----------------------------------
+
 
 df = pd.read_csv("data/dealer_inventory_features.csv")
 
@@ -12,25 +10,19 @@ print("Dataset loaded!")
 print("Original shape:", df.shape)
 
 
-# -----------------------------------
-# 2. Convert month to datetime
-# -----------------------------------
+
 
 df["month"] = pd.to_datetime(df["month"])
 
 
-# -----------------------------------
-# 3. Sort the data
-# -----------------------------------
+
 
 df = df.sort_values(
     ["dealer_id", "model", "month"]
 ).reset_index(drop=True)
 
 
-# -----------------------------------
-# 4. Previous month sales
-# -----------------------------------
+
 
 df["sales_last_month"] = (
     df.groupby(["dealer_id", "model"])["sales"]
@@ -38,9 +30,6 @@ df["sales_last_month"] = (
 )
 
 
-# -----------------------------------
-# 5. Three-month average sales
-# -----------------------------------
 
 df["sales_3_month_avg"] = (
     df.groupby(["dealer_id", "model"])["sales"]
@@ -50,9 +39,7 @@ df["sales_3_month_avg"] = (
 )
 
 
-# -----------------------------------
-# 6. Six-month average sales
-# -----------------------------------
+
 
 df["sales_6_month_avg"] = (
     df.groupby(["dealer_id", "model"])["sales"]
@@ -62,9 +49,7 @@ df["sales_6_month_avg"] = (
 )
 
 
-# -----------------------------------
-# 7. One-month sales growth
-# -----------------------------------
+
 
 previous_previous_sales = (
     df.groupby(["dealer_id", "model"])["sales"]
@@ -81,9 +66,7 @@ df["sales_growth_1m"] = (
 )
 
 
-# -----------------------------------
-# 8. Regional model demand
-# -----------------------------------
+
 
 df["regional_model_sales"] = (
     df.groupby(
@@ -93,9 +76,7 @@ df["regional_model_sales"] = (
 )
 
 
-# -----------------------------------
-# 9. Days of inventory
-# -----------------------------------
+
 
 daily_sales = df["sales_last_month"] / 30
 
@@ -106,9 +87,7 @@ df["days_of_inventory"] = (
 )
 
 
-# -----------------------------------
-# 10. Inventory turnover
-# -----------------------------------
+
 
 df["inventory_turnover"] = (
     df["sales_last_month"]
@@ -117,27 +96,21 @@ df["inventory_turnover"] = (
 )
 
 
-# -----------------------------------
-# 11. Extract month number
-# -----------------------------------
+
 
 df["month_number"] = (
     df["month"].dt.month
 )
 
 
-# -----------------------------------
-# 12. Extract quarter
-# -----------------------------------
+
 
 df["quarter"] = (
     df["month"].dt.quarter
 )
 
 
-# -----------------------------------
-# 13. Check missing values
-# -----------------------------------
+
 
 print("\nMissing values before cleaning:")
 
@@ -159,10 +132,6 @@ print(
 )
 
 
-# -----------------------------------
-# 14. Remove rows where required
-# historical features are unavailable
-# -----------------------------------
 
 required_features = [
     "sales_last_month",
@@ -180,9 +149,7 @@ df = df.dropna(
 ).reset_index(drop=True)
 
 
-# -----------------------------------
-# 15. Convert categorical columns
-# -----------------------------------
+
 
 df = pd.get_dummies(
     df,
@@ -195,9 +162,6 @@ df = pd.get_dummies(
 )
 
 
-# -----------------------------------
-# 16. Separate features and target
-# -----------------------------------
 
 X = df.drop(
     columns=[
@@ -228,9 +192,7 @@ print("\nFeatures:")
 print(X.columns.tolist())
 
 
-# -----------------------------------
-# 18. Save processed dataset
-# -----------------------------------
+
 
 output_file = "data/processed_features.csv"
 

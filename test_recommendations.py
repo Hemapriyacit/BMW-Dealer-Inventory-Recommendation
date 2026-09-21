@@ -8,9 +8,6 @@ from src.recommendation.recommendation_engine import (
 import pandas as pd
 
 
-# ============================================================
-# GET LATEST RECORD FOR EACH DEALER + MODEL
-# ============================================================
 
 latest_records = (
     df.sort_values("month")
@@ -34,9 +31,6 @@ print(
 )
 
 
-# ============================================================
-# GET SAME ROWS FROM ENCODED DATA
-# ============================================================
 
 latest_indices = latest_records.index
 
@@ -45,9 +39,6 @@ encoded_latest = df_encoded.loc[
 ].copy()
 
 
-# ============================================================
-# PREPARE FEATURES
-# ============================================================
 
 X = encoded_latest.drop(
     columns=[
@@ -58,7 +49,7 @@ X = encoded_latest.drop(
 )
 
 
-# Make columns exactly match training
+
 
 X = X.reindex(
     columns=feature_columns,
@@ -71,9 +62,7 @@ print(
 )
 
 
-# ============================================================
-# PREDICT ALL DEALER + MODEL COMBINATIONS
-# ============================================================
+
 
 print()
 print("Predicting demand for all dealer-model combinations...")
@@ -88,9 +77,7 @@ predicted_demand = pd.Series(
 )
 
 
-# ============================================================
-# CALCULATE TARGET INVENTORY
-# ============================================================
+
 
 latest_records["predicted_demand"] = (
     predicted_demand
@@ -106,9 +93,6 @@ latest_records["target_inventory"] = (
 )
 
 
-# ============================================================
-# CALCULATE RECOMMENDED QUANTITY
-# ============================================================
 
 latest_records["recommended_quantity"] = (
     latest_records["target_inventory"]
@@ -125,9 +109,6 @@ latest_records["recommended_quantity"] = (
 )
 
 
-# ============================================================
-# FIND POSITIVE RECOMMENDATIONS
-# ============================================================
 
 positive_cases = latest_records[
     latest_records["recommended_quantity"] > 0
@@ -142,9 +123,7 @@ positive_cases = positive_cases.sort_values(
 )
 
 
-# ============================================================
-# DISPLAY RESULTS
-# ============================================================
+
 
 print()
 print("=" * 80)
@@ -177,9 +156,7 @@ else:
     )
 
 
-# ============================================================
-# SUMMARY
-# ============================================================
+
 
 print()
 print("=" * 80)

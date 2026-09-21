@@ -102,6 +102,36 @@ def get_options():
         )
 
 
+@app.get("/history")
+def get_history(dealer_id: str, model: str):
+
+    try:
+        df = pd.read_csv(DATA_FILE)
+        selected = df[
+            (df["dealer_id"] == dealer_id)
+            & (df["model"] == model)
+        ].sort_values("month").tail(12)
+
+        if selected.empty:
+            raise HTTPException(
+                status_code=404,
+                detail=f"No history found for dealer {dealer_id} and model {model}.",
+            )
+
+        return {
+            "months": selected["month"].tolist(),
+            "actual_sales": selected["sales"].astype(float).tolist(),
+            "predicted_demand": selected["next_month_sales"].astype(float).tolist(),
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Unable to load sales history: {str(e)}",
+        )
+
+
 # ------------------------------------------------------------
 # INVENTORY RECOMMENDATION
 # ------------------------------------------------------------

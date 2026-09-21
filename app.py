@@ -2,9 +2,7 @@ import requests
 import streamlit as st
 
 
-# ---------------------------------------------------------
-# Page configuration
-# ---------------------------------------------------------
+
 
 st.set_page_config(
     page_title="BMW Dealer Inventory Recommendation",
@@ -14,9 +12,7 @@ st.set_page_config(
 )
 
 
-# ---------------------------------------------------------
-# Custom styling
-# ---------------------------------------------------------
+
 
 st.markdown(
     """
@@ -249,9 +245,6 @@ st.markdown(
 )
 
 
-# ---------------------------------------------------------
-# Header
-# ---------------------------------------------------------
 
 st.markdown(
     """
@@ -269,9 +262,6 @@ st.markdown(
 )
 
 
-# ---------------------------------------------------------
-# Sidebar
-# ---------------------------------------------------------
 
 with st.sidebar:
     st.markdown("## ℹ️ Project Info")
@@ -305,9 +295,7 @@ with st.sidebar:
     st.caption("Connects to the FastAPI service on `127.0.0.1:8000`.")
 
 
-# ---------------------------------------------------------
-# Input section
-# ---------------------------------------------------------
+
 
 st.markdown(
     '<div class="section-title"><span class="dot"></span>Dealer &amp; Model Selection</div>',
@@ -352,9 +340,6 @@ with st.container():
     st.markdown("</div>", unsafe_allow_html=True)
 
 
-# ---------------------------------------------------------
-# Helper: sales trend badge
-# ---------------------------------------------------------
 
 def trend_badge(trend: str) -> str:
     trend_lower = (trend or "").lower()
@@ -367,9 +352,6 @@ def trend_badge(trend: str) -> str:
     return f'<span class="badge {cls}">{icon} {trend.title()}</span>'
 
 
-# ---------------------------------------------------------
-# Recommendation
-# ---------------------------------------------------------
 
 if generate:
 
@@ -403,9 +385,7 @@ if generate:
 
             st.success(f"✅ Recommendation generated for **{dealer_id} — {model}**")
 
-            # -------------------------------------------------
-            # KPI cards
-            # -------------------------------------------------
+     
 
             st.markdown(
                 '<div class="section-title"><span class="dot"></span>Recommendation Summary</div>',
@@ -466,9 +446,7 @@ if generate:
                     unsafe_allow_html=True,
                 )
 
-            # -------------------------------------------------
-            # Inventory analysis
-            # -------------------------------------------------
+         
 
             st.markdown(
                 '<div class="section-title"><span class="dot"></span>Inventory Analysis</div>',
@@ -501,9 +479,7 @@ if generate:
                     unsafe_allow_html=True,
                 )
 
-            # -------------------------------------------------
-            # Comparison chart
-            # -------------------------------------------------
+      
 
             st.markdown(
                 '<div class="section-title"><span class="dot"></span>Demand vs. Inventory</div>',
@@ -531,9 +507,7 @@ if generate:
                 use_container_width=True,
             )
 
-            # -------------------------------------------------
-            # Reason
-            # -------------------------------------------------
+        
 
             st.markdown(
                 '<div class="section-title"><span class="dot"></span>Recommendation Reason</div>',
@@ -571,9 +545,7 @@ else:
     )
 
 
-# ---------------------------------------------------------
-# Footer
-# ---------------------------------------------------------
+
 
 st.divider()
 

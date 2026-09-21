@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 
 /* =====================================================
    GLOBAL
@@ -14,18 +14,14 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", Arial, sans-serif;
-  background: #f4f7fb;
+  font-family: "DM Sans", sans-serif;
+  background: #f3f7fb;
   color: #142b49;
 }
 
 button,
 input,
 select {
-  font-family: inherit;
-}
-
-button {
   font-family: inherit;
 }
 
@@ -40,13 +36,13 @@ button {
 ===================================================== */
 
 .sidebar {
-  width: 255px;
+  width: 236px;
   min-height: 100vh;
-  background: #0b182b;
+  background: linear-gradient(180deg, #07192d 0%, #0b2540 100%);
   color: white;
   display: flex;
   flex-direction: column;
-  padding: 28px 15px 25px;
+  padding: 26px 14px 24px;
   position: fixed;
   left: 0;
   top: 0;
@@ -58,35 +54,21 @@ button {
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 0 5px 35px;
+  padding: 0 7px 42px;
 }
 
 .bmw-logo {
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-  border: 3px solid #ffffff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #ffffff 48%,
-    #1769d1 49%,
-    #1769d1 100%
-  );
-  color: #0b182b;
+  display: block;
 }
 
 .brand-name {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
 .navigation {
@@ -101,11 +83,11 @@ button {
   gap: 15px;
   min-height: 52px;
   padding: 14px 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   color: #d7e0ed;
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .nav-item:hover {
@@ -113,16 +95,16 @@ button {
 }
 
 .nav-item.active {
-  background: #0868d9;
+  background: linear-gradient(100deg, #0878e5, #0758b9);
   color: white;
-  box-shadow: 0 7px 20px rgba(0, 103, 216, 0.25);
+  box-shadow: 0 10px 24px rgba(0, 103, 216, 0.28);
 }
 
 .nav-icon {
   width: 22px;
   min-width: 22px;
   text-align: center;
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .sidebar-footer {
@@ -144,8 +126,8 @@ button {
 ===================================================== */
 
 .main-content {
-  margin-left: 255px;
-  width: calc(100% - 255px);
+  margin-left: 236px;
+  width: calc(100% - 236px);
   min-height: 100vh;
   background: #f5f8fc;
 }
@@ -156,19 +138,27 @@ button {
 ===================================================== */
 
 .topbar {
-  height: 63px;
-  background: white;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.88);
   border-bottom: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 32px;
+  padding: 0 36px;
+  backdrop-filter: blur(16px);
 }
 
 .topbar-title {
   color: #718096;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
 }
 
 .topbar-brand {
@@ -177,17 +167,41 @@ button {
   gap: 9px;
   color: #142b49;
   font-weight: 700;
+  font-size: 14px;
 }
 
 .mini-bmw-logo {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  border: 2px solid #142b49;
+  display: block;
+}
+
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #405066;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.user-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #eef2f7;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 5px;
+  font-size: 14px;
+  color: #647d88;
+}
+
+.chevron {
+  font-size: 10px;
+  color: #8a97aa;
 }
 
 
@@ -196,96 +210,98 @@ button {
 ===================================================== */
 
 .hero {
-  min-height: 250px;
+  min-height: 274px;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
-  padding: 32px 65px;
-  background:
-    linear-gradient(
-      100deg,
-      #f9fcff 0%,
-      #eef6fd 45%,
-      #d8e9f7 100%
-    );
-  border-bottom: 1px solid #dce7f1;
+  justify-content: space-between;
+  padding: 36px 58px;
+  background: linear-gradient(105deg, #f9fcff 0%, #eff7fb 52%, #c9e9ee 100%);
+  border-bottom: 1px solid #d0e4eb;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 610px;
-}
-
-.hero-label {
-  color: #0872d9;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 7px;
-  letter-spacing: 0.3px;
+  max-width: 520px;
 }
 
 .hero h1 {
   margin: 0;
-  font-size: 43px;
-  line-height: 1.08;
-  letter-spacing: -1.5px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(34px, 3.3vw, 48px);
+  line-height: 1.1;
+  letter-spacing: 0;
   color: #142b49;
   font-weight: 800;
 }
 
 .hero p {
   margin: 13px 0 0;
-  color: #51677f;
+  color: #536c80;
   font-size: 15px;
   line-height: 1.55;
-  max-width: 560px;
+  max-width: 480px;
 }
 
 
 /* =====================================================
-   CSS CAR
+   HERO VISUAL (car + roundel + tagline)
 ===================================================== */
 
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 520px;
+  z-index: 2;
+}
+
 .hero-car {
-  position: absolute;
-  right: 30px;
-  bottom: 0;
-  width: 48%;
+  position: relative;
+  width: 510px;
+  height: 218px;
+  flex-shrink: 0;
+}
+
+.hero-car img {
+  display: block;
+  width: 100%;
   height: 100%;
-  pointer-events: none;
+  object-fit: cover;
+  object-position: 72% 58%;
+  mix-blend-mode: multiply;
+  filter: saturate(0.85) contrast(1.06);
 }
 
 .road {
   position: absolute;
   bottom: 0;
-  right: -10%;
-  width: 110%;
-  height: 42px;
-  background: linear-gradient(
-    to bottom,
-    #b9c8d5,
-    #8598aa
-  );
+  left: -20%;
+  width: 140%;
+  height: 30px;
+  background: linear-gradient(to bottom, #b9c8d5, #8598aa);
   transform: perspective(300px) rotateX(12deg);
+  border-radius: 4px;
 }
 
 .car {
   position: absolute;
-  width: 470px;
-  height: 190px;
-  right: 30px;
-  bottom: 28px;
+  width: 320px;
+  height: 150px;
+  left: 10px;
+  bottom: 22px;
 }
 
 .car-roof {
   position: absolute;
-  width: 245px;
-  height: 105px;
-  left: 100px;
+  width: 175px;
+  height: 78px;
+  left: 70px;
   top: 3px;
-  border-radius: 130px 130px 10px 10px;
+  border-radius: 100px 100px 8px 8px;
   background: #152d46;
   transform: skewX(-8deg);
 }
@@ -293,117 +309,134 @@ button {
 .car-roof::after {
   content: "";
   position: absolute;
-  width: 205px;
-  height: 73px;
-  left: 20px;
-  top: 13px;
-  border-radius: 100px 100px 5px 5px;
-  background: linear-gradient(
-    135deg,
-    #7894ae,
-    #182d43
-  );
+  width: 147px;
+  height: 54px;
+  left: 14px;
+  top: 10px;
+  border-radius: 80px 80px 5px 5px;
+  background: linear-gradient(135deg, #7894ae, #182d43);
 }
 
 .car-body {
   position: absolute;
   left: 0;
-  bottom: 30px;
-  width: 470px;
-  height: 105px;
-  border-radius: 100px 55px 25px 30px;
-  background: linear-gradient(
-    160deg,
-    #294b68,
-    #0c2035 65%
-  );
-  box-shadow: 0 18px 35px rgba(24, 53, 80, 0.35);
-}
-
-.car-window {
-  position: absolute;
-  left: 125px;
-  top: -73px;
-  width: 90px;
-  height: 68px;
-  background: #142a40;
-  transform: skewX(-18deg);
-  border-radius: 8px;
-}
-
-.car-window.back {
-  left: 214px;
-  transform: skewX(15deg);
+  bottom: 22px;
+  width: 320px;
+  height: 75px;
+  border-radius: 80px 40px 18px 22px;
+  background: linear-gradient(160deg, #294b68, #0c2035 65%);
+  box-shadow: 0 14px 28px rgba(24, 53, 80, 0.3);
 }
 
 .car-grille {
   position: absolute;
-  right: 35px;
-  top: 28px;
-  width: 42px;
-  height: 52px;
-  border-radius: 7px;
+  right: 24px;
+  top: 18px;
+  width: 30px;
+  height: 38px;
+  border-radius: 6px;
   border: 2px solid #879aaa;
   display: flex;
   justify-content: center;
-  gap: 4px;
-  padding: 5px;
+  gap: 3px;
+  padding: 4px;
 }
 
 .car-grille span {
-  width: 5px;
-  height: 40px;
+  width: 3px;
+  height: 28px;
   background: #071421;
   border-radius: 3px;
 }
 
 .headlight {
   position: absolute;
-  width: 52px;
-  height: 13px;
-  top: 21px;
+  width: 36px;
+  height: 10px;
+  top: 15px;
   border-radius: 20px;
   background: #e5f5ff;
-  box-shadow: 0 0 16px #bfeaff;
+  box-shadow: 0 0 14px #bfeaff;
 }
 
 .headlight.right {
-  right: 85px;
+  right: 60px;
 }
 
 .headlight.left {
-  right: 150px;
+  right: 105px;
 }
 
 .wheel {
   position: absolute;
-  width: 65px;
-  height: 65px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: #07101a;
-  border: 8px solid #4c6174;
-  bottom: -30px;
+  border: 6px solid #4c6174;
+  bottom: -18px;
 }
 
 .left-wheel {
-  left: 72px;
+  left: 48px;
 }
 
 .right-wheel {
-  right: 70px;
+  right: 46px;
+}
+
+.hero-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.hero-roundel {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid rgba(20, 43, 73, 0.18);
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-roundel .bmw-logo {
+  width: 54px;
+  height: 54px;
+  border-width: 2px;
+  font-size: 7px;
+}
+
+.hero-tagline {
+  text-align: right;
+  color: #142b49;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  line-height: 1.4;
 }
 
 
 /* =====================================================
-   CONTENT
+   DASHBOARD LAYOUT
 ===================================================== */
 
-.content-wrapper {
+.dashboard-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 330px;
-  gap: 24px;
-  padding: 24px 32px;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+  padding: 22px 36px 28px;
   align-items: start;
+}
+
+.dashboard-left {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
 }
 
 
@@ -411,65 +444,54 @@ button {
    COMMON CARDS
 ===================================================== */
 
-.recommendation-card,
-.why-card {
+.select-card,
+.chart-card,
+.summary-card {
   background: white;
   border: 1px solid #e1e9f1;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(25, 55, 85, 0.06);
+  border-radius: 14px;
+  box-shadow: 0 12px 34px rgba(25, 55, 85, 0.07);
 }
 
 
 /* =====================================================
-   RECOMMENDATION CARD
+   SELECT DETAILS CARD
 ===================================================== */
 
-.recommendation-card {
-  padding: 30px;
+.select-card {
+  padding: 24px 26px;
 }
 
 .card-heading {
   display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  margin-bottom: 27px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 .heading-icon {
-  width: 42px;
-  height: 42px;
+  width: 34px;
+  height: 34px;
   flex-shrink: 0;
-  border-radius: 50%;
+  border-radius: 9px;
   background: #eaf4ff;
   color: #0872d9;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 19px;
+  font-size: 16px;
 }
 
 .card-heading h2 {
-  margin: 0 0 6px;
-  font-size: 20px;
-  line-height: 1.3;
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0;
+  font-size: 18px;
   color: #142b49;
 }
 
-.card-heading p {
-  margin: 0;
-  color: #73869d;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-
-/* =====================================================
-   FORM
-===================================================== */
-
 .form-row {
   display: grid;
-  grid-template-columns: minmax(210px, 1fr) minmax(210px, 1fr) 190px;
+  grid-template-columns: minmax(210px, 1fr) minmax(210px, 1fr) 230px;
   gap: 18px;
   align-items: end;
   width: 100%;
@@ -480,69 +502,29 @@ button {
 }
 
 .form-group label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 7px;
   color: #52677e;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   margin-bottom: 8px;
 }
 
-
-/* =====================================================
-   OLD SELECT SUPPORT
-===================================================== */
+.label-icon {
+  font-size: 13px;
+}
 
 .select-wrapper {
   position: relative;
   width: 100%;
 }
 
-.select-wrapper select {
-  width: 100%;
-  height: 54px;
-  appearance: none;
-  border: 1px solid #d5e0eb;
-  border-radius: 8px;
-  background: white;
-  padding: 0 40px 0 43px;
-  color: #263b52;
-  font-size: 14px;
-  outline: none;
-  cursor: pointer;
-}
-
-.select-wrapper select:focus {
-  border-color: #0872d9;
-  box-shadow: 0 0 0 3px rgba(8, 114, 217, 0.1);
-}
-
-.select-icon {
-  position: absolute;
-  left: 15px;
-  top: 17px;
-  z-index: 2;
-  color: #6d8096;
-}
-
-.arrow {
-  position: absolute;
-  right: 16px;
-  top: 15px;
-  font-size: 18px;
-  color: #6d8096;
-  pointer-events: none;
-}
-
-
-/* =====================================================
-   REACT SELECT
-===================================================== */
-
-/* Main control */
+/* react-select overrides */
 .form-group [class*="control"] {
   min-height: 54px !important;
   width: 100%;
-  border-radius: 8px !important;
+  border-radius: 9px !important;
   border: 1px solid #d5e0eb !important;
   background: white !important;
   box-shadow: none !important;
@@ -558,37 +540,27 @@ button {
   box-shadow: 0 0 0 3px rgba(8, 114, 217, 0.1) !important;
 }
 
-
-/* Selected value */
 .form-group [class*="singleValue"] {
   color: #263b52 !important;
   font-size: 14px !important;
   font-weight: 500;
 }
 
-
-/* Placeholder */
 .form-group [class*="placeholder"] {
   color: #8a9bad !important;
   font-size: 14px !important;
 }
 
-
-/* Search input */
 .form-group [class*="input"] {
   color: #263b52 !important;
   font-size: 14px !important;
 }
 
-
-/* Input container */
 .form-group [class*="valueContainer"] {
   padding-left: 14px !important;
   padding-right: 8px !important;
 }
 
-
-/* Dropdown arrows / clear icons */
 .form-group [class*="indicatorSeparator"] {
   background: #dbe4ed !important;
 }
@@ -604,8 +576,6 @@ button {
   color: #0872d9 !important;
 }
 
-
-/* Dropdown menu */
 .form-group [class*="menu"] {
   z-index: 1000 !important;
   margin-top: 5px !important;
@@ -616,8 +586,6 @@ button {
   background: white;
 }
 
-
-/* Dropdown options */
 .form-group [class*="option"] {
   color: #263b52 !important;
   background: white !important;
@@ -626,10 +594,7 @@ button {
   cursor: pointer !important;
 }
 
-.form-group [class*="option"]:hover {
-  background: #eef6ff !important;
-}
-
+.form-group [class*="option"]:hover,
 .form-group [class*="option--is-focused"] {
   background: #eef6ff !important;
 }
@@ -639,22 +604,24 @@ button {
   color: white !important;
 }
 
+.selector-hint {
+  display: block;
+  margin-top: 6px;
+  color: #93a1b0;
+  font-size: 11px;
+}
+
 
 /* =====================================================
-   RECOMMEND BUTTON
+   GENERATE BUTTON
 ===================================================== */
 
 .recommend-button {
   width: 100%;
-  min-width: 180px;
   height: 54px;
   border: none;
-  border-radius: 8px;
-  background: linear-gradient(
-    135deg,
-    #0878e5,
-    #0964c7
-  );
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0878e5, #0759b8);
   color: white;
   font-size: 14px;
   font-weight: 700;
@@ -662,7 +629,10 @@ button {
   box-shadow: 0 7px 18px rgba(0, 103, 216, 0.22);
   transition: all 0.2s ease;
   padding: 0 16px;
-  line-height: 1.25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
 }
 
 .recommend-button:hover {
@@ -682,100 +652,271 @@ button {
 
 
 /* =====================================================
-   SMART INVENTORY
+   METRIC / KPI CARDS
 ===================================================== */
 
-.smart-inventory {
-  margin-top: 25px;
-  min-height: 112px;
-  padding: 24px 27px;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  background: linear-gradient(
-    100deg,
-    #f2f8ff,
-    #f8fbff
-  );
-  border: 1px solid #e5eff8;
-  border-radius: 9px;
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
-.smart-icon {
-  width: 70px;
-  height: 70px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: #e0efff;
+.metric-card {
+  padding: 18px;
+  min-height: 130px;
+  border: 1px solid #e6edf4;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 4px 14px rgba(25, 55, 85, 0.04);
+}
+
+.metric-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 29px;
+  font-size: 17px;
+  margin-bottom: 14px;
 }
 
-.smart-inventory h3 {
-  margin: 0 0 7px;
-  font-size: 16px;
-  color: #142b49;
+.metric-card.demand .metric-icon {
+  background: #dceaff;
+  color: #1769d1;
 }
 
-.smart-inventory p {
-  margin: 0;
-  color: #71849a;
+.metric-card.inventory .metric-icon {
+  background: #d9f2e2;
+  color: #17a34a;
+}
+
+.metric-card.quantity .metric-icon {
+  background: #e6dcfb;
+  color: #7c3aed;
+}
+
+.metric-card.days .metric-icon {
+  background: #fbe4c8;
+  color: #d97a17;
+}
+
+.metric-card .metric-label {
+  display: block;
+  color: #73869b;
   font-size: 13px;
-  line-height: 1.55;
-  max-width: 610px;
+  margin-bottom: 6px;
+}
+
+.metric-card .metric-value {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  color: #142b49;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.metric-card .metric-value span {
+  font-size: 13px;
+  font-weight: 500;
+  color: #7a8ca0;
+}
+
+.metric-card .metric-delta {
+  display: block;
+  margin-top: 8px;
+  color: #17a34a;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 
 /* =====================================================
-   WHY CARD
+   CHART CARD
 ===================================================== */
 
-.why-card {
-  padding: 27px 25px;
+.chart-card {
+  padding: 24px 26px;
 }
 
-.why-card > h2 {
-  margin: 0 0 25px;
-  font-size: 20px;
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chart-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
   color: #142b49;
 }
 
-.benefit {
+.chart-title .heading-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 13px;
+}
+
+.chart-legend {
   display: flex;
-  gap: 14px;
-  margin-bottom: 23px;
+  gap: 18px;
+  font-size: 12px;
+  color: #52677e;
 }
 
-.benefit:last-child {
-  margin-bottom: 0;
+.chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.benefit-icon {
-  width: 45px;
-  height: 45px;
-  flex-shrink: 0;
+.legend-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #eef6ff;
-  color: #0872d9;
+  display: inline-block;
+}
+
+.legend-dot.actual {
+  background: #1769d1;
+}
+
+.legend-dot.predicted {
+  background: #9b6bf0;
+}
+
+
+/* =====================================================
+   RECOMMENDATION SUMMARY (right column)
+===================================================== */
+
+.summary-card {
+  padding: 22px;
+  position: sticky;
+  top: 24px;
+}
+
+.summary-title {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 20px;
+  gap: 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #142b49;
+  margin-bottom: 18px;
 }
 
-.benefit h3 {
-  margin: 1px 0 5px;
-  font-size: 14px;
-  color: #203650;
-}
-
-.benefit p {
-  margin: 0;
-  color: #7a8ca0;
+.summary-title .heading-icon {
+  width: 26px;
+  height: 26px;
   font-size: 12px;
-  line-height: 1.5;
+  background: #e6f8ee;
+  color: #17a34a;
+}
+
+.summary-vehicle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 18px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.summary-vehicle-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.summary-vehicle .bmw-logo {
+  width: 34px;
+  height: 34px;
+  border-width: 2px;
+  font-size: 6px;
+}
+
+.summary-vehicle h3 {
+  margin: 0 0 3px;
+  font-size: 15px;
+  color: #142b49;
+}
+
+.summary-vehicle p {
+  margin: 0;
+  font-size: 12px;
+  color: #8a97aa;
+}
+
+.badge-recommended {
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: #dcf5e3;
+  color: #17a34a;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f4f8;
+  font-size: 13px;
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-row span:first-child {
+  color: #71849a;
+}
+
+.summary-row span:last-child {
+  color: #142b49;
+  font-weight: 700;
+}
+
+.why-box {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 10px;
+  background: #eef6ff;
+  border: 1px solid #dcebfb;
+}
+
+.why-box-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #142b49;
+  margin-bottom: 8px;
+}
+
+.why-box p {
+  margin: 0;
+  color: #4d6784;
+  font-size: 12.5px;
+  line-height: 1.6;
 }
 
 
@@ -808,200 +949,6 @@ button {
 
 
 /* =====================================================
-   RESULTS
-===================================================== */
-
-.results-section {
-  margin: 0 32px 25px;
-  background: white;
-  border: 1px solid #e1e9f1;
-  border-radius: 12px;
-  padding: 28px;
-  box-shadow: 0 5px 20px rgba(25, 55, 85, 0.06);
-}
-
-.results-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  margin-bottom: 22px;
-}
-
-.results-title > div:first-child span,
-.business-reason > span {
-  color: #0872d9;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-}
-
-.results-title h2 {
-  margin: 5px 0 0;
-  color: #142b49;
-  font-size: 21px;
-}
-
-.trend-badge {
-  padding: 8px 15px;
-  border-radius: 20px;
-  background: #eef6ff;
-  color: #0872d9;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: capitalize;
-  white-space: nowrap;
-}
-
-
-/* =====================================================
-   METRICS
-===================================================== */
-
-.metric-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-}
-
-.metric-card {
-  padding: 21px;
-  min-height: 115px;
-  border: 1px solid #e1e9f1;
-  border-radius: 9px;
-  background: #fbfdff;
-}
-
-.metric-card span {
-  display: block;
-  color: #73869b;
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
-.metric-card strong {
-  display: block;
-  color: #142b49;
-  font-size: 27px;
-  line-height: 1.15;
-}
-
-.metric-card small {
-  display: block;
-  color: #93a1b0;
-  margin-top: 5px;
-}
-
-.metric-card.recommendation {
-  background: linear-gradient(
-    135deg,
-    #edf7ff,
-    #f8fcff
-  );
-  border-color: #bcdcff;
-}
-
-.metric-card.recommendation strong {
-  color: #0872d9;
-}
-
-
-/* =====================================================
-   RESULT BOTTOM
-===================================================== */
-
-.result-bottom {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.inventory-position,
-.business-reason {
-  border: 1px solid #e1e9f1;
-  border-radius: 9px;
-  padding: 22px;
-}
-
-.inventory-position h3,
-.business-reason h3 {
-  margin: 0 0 20px;
-  color: #142b49;
-  font-size: 16px;
-}
-
-
-/* =====================================================
-   INVENTORY POSITION
-===================================================== */
-
-.inventory-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  font-size: 13px;
-  color: #71849a;
-  margin-top: 14px;
-}
-
-.inventory-row strong {
-  color: #263b52;
-}
-
-.progress {
-  width: 100%;
-  height: 8px;
-  background: #e8eef5;
-  border-radius: 10px;
-  margin-top: 8px;
-  overflow: hidden;
-}
-
-.progress-current,
-.progress-target {
-  height: 100%;
-  border-radius: 10px;
-}
-
-.progress-current {
-  background: #0872d9;
-}
-
-.progress-target {
-  width: 100%;
-  background: #9bb5ce;
-}
-
-.days-inventory {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid #e8eef5;
-  color: #71849a;
-  font-size: 13px;
-}
-
-.days-inventory strong {
-  color: #142b49;
-}
-
-
-/* =====================================================
-   BUSINESS REASON
-===================================================== */
-
-.business-reason p {
-  margin: 0;
-  color: #657a90;
-  line-height: 1.7;
-  font-size: 14px;
-}
-
-
-/* =====================================================
    FOOTER
 ===================================================== */
 
@@ -1009,44 +956,26 @@ button {
   min-height: 55px;
   border-top: 1px solid #e0e7ef;
   background: white;
-  padding: 0 32px;
+  padding: 0 36px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   color: #7c8da0;
-  font-size: 11px;
-}
-
-.footer-divider {
-  color: #c4ced8;
-}
-
-.footer-right {
-  margin-left: auto;
-  display: flex;
-  gap: 10px;
-  align-items: center;
+  font-size: 12px;
 }
 
 
 /* =====================================================
-   RESPONSIVE — 1200px
+   RESPONSIVE
 ===================================================== */
 
 @media (max-width: 1200px) {
-
-  .content-wrapper {
+  .dashboard-grid {
     grid-template-columns: 1fr;
   }
 
-  .why-card {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .why-card > h2 {
-    grid-column: 1 / -1;
+  .summary-card {
+    position: static;
   }
 
   .form-row {
@@ -1055,22 +984,28 @@ button {
 
   .recommend-button {
     grid-column: 1 / -1;
-    width: 220px;
-    justify-self: start;
+  }
+
+  .hero-visual {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -110px;
+    min-width: 0;
+    opacity: 0.9;
   }
 
   .hero-car {
-    opacity: 0.4;
+    width: 450px;
+  }
+
+  .hero-badge {
+    display: none;
   }
 }
 
-
-/* =====================================================
-   RESPONSIVE — 900px
-===================================================== */
-
 @media (max-width: 900px) {
-
   .sidebar {
     width: 80px;
     padding: 25px 10px;
@@ -1099,20 +1034,8 @@ button {
     width: calc(100% - 80px);
   }
 
-  .hero {
-    padding: 30px 35px;
-  }
-
   .hero h1 {
-    font-size: 37px;
-  }
-
-  .hero-car {
-    opacity: 0.2;
-  }
-
-  .result-bottom {
-    grid-template-columns: 1fr;
+    font-size: 34px;
   }
 
   .metric-grid {
@@ -1120,13 +1043,7 @@ button {
   }
 }
 
-
-/* =====================================================
-   RESPONSIVE — 700px
-===================================================== */
-
 @media (max-width: 700px) {
-
   .topbar {
     padding: 0 20px;
   }
@@ -1136,64 +1053,25 @@ button {
   }
 
   .hero {
-    min-height: 210px;
+    min-height: auto;
     padding: 30px 25px;
   }
 
   .hero h1 {
-    font-size: 32px;
+    font-size: 28px;
   }
 
-  .hero p {
-    font-size: 14px;
-  }
-
-  .hero-car {
-    display: none;
-  }
-
-  .content-wrapper {
+  .dashboard-grid {
     padding: 18px;
   }
 
-  .recommendation-card,
-  .why-card {
+  .select-card,
+  .chart-card {
     padding: 20px;
   }
 
   .form-row {
     grid-template-columns: 1fr;
-  }
-
-  .recommend-button {
-    grid-column: auto;
-    width: 100%;
-    justify-self: stretch;
-  }
-
-  .smart-inventory {
-    align-items: flex-start;
-    padding: 20px;
-  }
-
-  .smart-icon {
-    width: 58px;
-    height: 58px;
-    font-size: 25px;
-  }
-
-  .why-card {
-    display: block;
-  }
-
-  .benefit {
-    margin-bottom: 20px;
-  }
-
-  .results-section {
-    margin-left: 18px;
-    margin-right: 18px;
-    padding: 20px;
   }
 
   .metric-grid {
@@ -1202,16 +1080,16 @@ button {
 
   .page-footer {
     padding: 0 18px;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    min-height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }
 
-
-/* =====================================================
-   RESPONSIVE — 500px
-===================================================== */
-
 @media (max-width: 500px) {
-
   .sidebar {
     width: 65px;
   }
@@ -1221,37 +1099,7 @@ button {
     width: calc(100% - 65px);
   }
 
-  .bmw-logo {
-    width: 40px;
-    height: 40px;
-  }
-
-  .hero h1 {
-    font-size: 28px;
-  }
-
   .metric-grid {
     grid-template-columns: 1fr;
-  }
-
-  .results-title {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .trend-badge {
-    align-self: flex-start;
-  }
-
-  .smart-inventory {
-    flex-direction: column;
-  }
-
-  .page-footer {
-    font-size: 10px;
-  }
-
-  .footer-right {
-    display: none;
   }
 }

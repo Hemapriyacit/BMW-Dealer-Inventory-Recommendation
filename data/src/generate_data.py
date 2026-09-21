@@ -3,9 +3,7 @@ import pandas as pd
 from pathlib import Path
 
 
-# ==========================================
-# 1. Project paths
-# ==========================================
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -17,9 +15,7 @@ DATA_DIR.mkdir(
 )
 
 
-# ==========================================
-# 2. Basic configuration
-# ==========================================
+
 
 NUM_DEALERS = 250
 NUM_MONTHS = 60
@@ -56,16 +52,11 @@ REGIONS = [
 ]
 
 
-# ==========================================
-# 3. Random generator
-# ==========================================
 
 rng = np.random.default_rng(42)
 
 
-# ==========================================
-# 4. Dealer → Region mapping
-# ==========================================
+
 
 dealer_regions = {}
 
@@ -73,9 +64,6 @@ for dealer in DEALERS:
     dealer_regions[dealer] = rng.choice(REGIONS)
 
 
-# ==========================================
-# 5. Base demand for each BMW model
-# ==========================================
 
 model_base_demand = {
     "2 Series": 18,
@@ -96,9 +84,7 @@ model_base_demand = {
 }
 
 
-# ==========================================
-# 6. Regional demand multipliers
-# ==========================================
+
 
 region_multiplier = {
     "North": 1.00,
@@ -109,9 +95,7 @@ region_multiplier = {
 }
 
 
-# ==========================================
-# 7. Create monthly records
-# ==========================================
+
 
 records = []
 
@@ -120,9 +104,7 @@ start_date = pd.Timestamp("2021-01-01")
 
 for dealer in DEALERS:
 
-    # --------------------------------------
-    # Assign dealer region
-    # --------------------------------------
+ 
 
     region = dealer_regions[dealer]
 
@@ -134,9 +116,7 @@ for dealer in DEALERS:
 
     for model in MODELS:
 
-        # ----------------------------------
-        # Model demand
-        # ----------------------------------
+     
 
         base_demand = model_base_demand[model]
 
@@ -153,9 +133,7 @@ for dealer in DEALERS:
 
         for month_number in range(NUM_MONTHS):
 
-            # ==================================
-            # Date
-            # ==================================
+    
 
             date = (
                 start_date
@@ -169,9 +147,7 @@ for dealer in DEALERS:
             month_number_in_year = date.month
 
 
-            # ==================================
-            # Seasonal effect
-            # ==================================
+         
 
             seasonal_effect = {
                 1: 0.90,
@@ -191,9 +167,6 @@ for dealer in DEALERS:
             ]
 
 
-            # ==================================
-            # Long-term growth
-            # ==================================
 
             growth_effect = (
                 1
@@ -201,9 +174,6 @@ for dealer in DEALERS:
             )
 
 
-            # ==================================
-            # Expected demand
-            # ==================================
 
             expected_demand = (
                 base_demand
@@ -215,9 +185,7 @@ for dealer in DEALERS:
             )
 
 
-            # ==================================
-            # Generate sales
-            # ==================================
+       
 
             sales = max(
                 1,
@@ -233,9 +201,6 @@ for dealer in DEALERS:
             )
 
 
-            # ==================================
-            # Previous month sales
-            # ==================================
 
             if previous_sales is None:
 
@@ -246,14 +211,11 @@ for dealer in DEALERS:
                 previous_month_sales = previous_sales
 
 
-            # ==================================
-            # Inventory management
-            # ==================================
+        
 
             if inventory is None:
 
-                # Initial inventory is approximately
-                # 1–2 months of expected demand.
+             
 
                 inventory = int(
                     sales
@@ -265,10 +227,7 @@ for dealer in DEALERS:
 
             else:
 
-                # --------------------------------
-                # Existing stock after sales
-                # --------------------------------
-
+               
                 inventory_after_sales = (
                     inventory
                     - previous_sales
@@ -280,14 +239,7 @@ for dealer in DEALERS:
                 )
 
 
-                # --------------------------------
-                # Replenishment based on demand
-                # --------------------------------
-                #
-                # Instead of a fixed random
-                # 10–35 units, replenishment
-                # depends on previous demand.
-                #
+               
 
                 replenishment = int(
                     previous_sales
@@ -303,9 +255,7 @@ for dealer in DEALERS:
                 )
 
 
-                # --------------------------------
-                # New inventory
-                # --------------------------------
+             
 
                 inventory = (
                     inventory_after_sales
@@ -313,9 +263,7 @@ for dealer in DEALERS:
                 )
 
 
-            # ==================================
-            # Inventory from previous month
-            # ==================================
+            
 
             if month_number == 0:
 
@@ -333,9 +281,6 @@ for dealer in DEALERS:
                 )
 
 
-            # ==================================
-            # Store record
-            # ==================================
 
             records.append(
                 {
@@ -351,23 +296,15 @@ for dealer in DEALERS:
             )
 
 
-            # ==================================
-            # Update previous sales
-            # ==================================
 
             previous_sales = sales
 
 
-# ==========================================
-# 8. Create DataFrame
-# ==========================================
+
 
 df = pd.DataFrame(records)
 
 
-# ==========================================
-# 9. Create next-month sales target
-# ==========================================
 
 df["next_month_sales"] = (
     df.groupby(
@@ -377,13 +314,6 @@ df["next_month_sales"] = (
 )
 
 
-# ==========================================
-# 10. Remove final month
-# ==========================================
-#
-# The final month doesn't have a known
-# next-month sales value.
-#
 
 df = df.dropna(
     subset=["next_month_sales"]
@@ -398,9 +328,7 @@ df["next_month_sales"] = (
 )
 
 
-# ==========================================
-# 11. Save dataset
-# ==========================================
+
 
 output_file = (
     DATA_DIR
@@ -413,9 +341,7 @@ df.to_csv(
 )
 
 
-# ==========================================
-# 12. Display dataset information
-# ==========================================
+
 
 print(
     "\nDataset generated successfully!"

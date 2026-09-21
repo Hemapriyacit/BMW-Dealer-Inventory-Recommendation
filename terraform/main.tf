@@ -1,34 +1,17 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 6.0"
-    }
-  }
-}
 
-provider "aws" {
-  region = "us-east-1"
-}
-
-# --------------------------------------------------
-# S3 Bucket
-# --------------------------------------------------
 
 resource "aws_s3_bucket" "inventory" {
-  bucket = "bmw-dealer-inventory-recommendation-2026"
+  bucket = var.bucket_name
 
   tags = {
     Name        = "BMW Dealer Inventory Recommendation"
     Project     = "BMW Dealer Inventory Recommendation"
-    Environment = "Development"
+    Environment = var.environment
     ManagedBy   = "Terraform"
   }
 }
 
-# --------------------------------------------------
-# S3 Bucket Versioning
-# --------------------------------------------------
+
 
 resource "aws_s3_bucket_versioning" "inventory" {
   bucket = aws_s3_bucket.inventory.id
@@ -38,9 +21,7 @@ resource "aws_s3_bucket_versioning" "inventory" {
   }
 }
 
-# --------------------------------------------------
-# S3 Server-Side Encryption
-# --------------------------------------------------
+
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "inventory" {
   bucket = aws_s3_bucket.inventory.id
@@ -51,10 +32,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "inventory" {
     }
   }
 }
-
-# --------------------------------------------------
-# S3 Public Access Block
-# --------------------------------------------------
 
 resource "aws_s3_bucket_public_access_block" "inventory" {
   bucket = aws_s3_bucket.inventory.id
