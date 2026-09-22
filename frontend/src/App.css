@@ -1005,6 +1005,17 @@ select {
   }
 }
 
+/* Keep the primary action visible when the dashboard column gets compact. */
+@media (max-width: 1400px) {
+  .form-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recommend-button {
+    grid-column: 1 / -1;
+  }
+}
+
 @media (max-width: 900px) {
   .sidebar {
     width: 80px;
@@ -1102,4 +1113,166 @@ select {
   .metric-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* =====================================================
+   DARK BMW PERFORMANCE THEME
+===================================================== */
+
+body {
+  background: #080a0d;
+  color: #f4f7fb;
+}
+
+.main-content {
+  background: #080a0d;
+}
+
+.topbar {
+  background: rgba(12, 15, 19, 0.92);
+  border-bottom-color: #20262d;
+}
+
+.topbar-title,
+.topbar-user {
+  color: #aab5c2;
+}
+
+.topbar-brand {
+  color: #f4f7fb;
+}
+
+.user-icon {
+  background: #20262d;
+  color: #b9c4d0;
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 78% 28%, rgba(0, 126, 255, 0.2), transparent 34%),
+    linear-gradient(115deg, #0a0d11 0%, #111820 58%, #122d3c 100%);
+  border-bottom-color: #25323d;
+}
+
+.hero h1 {
+  color: #f7f9fc;
+}
+
+.hero p {
+  color: #a9b7c6;
+}
+
+.hero-roundel {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-tagline {
+  color: #e9f1f8;
+}
+
+.select-card,
+.chart-card,
+.summary-card,
+.metric-card {
+  background: #11151a;
+  border-color: #27313a;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
+.heading-icon {
+  background: rgba(0, 114, 217, 0.18);
+  color: #4ba2ff;
+}
+
+.card-heading h2,
+.chart-title,
+.summary-title,
+.summary-vehicle h3,
+.metric-card .metric-value,
+.summary-row span:last-child,
+.why-box-title {
+  color: #f1f5f9;
+}
+
+.form-group label,
+.summary-row span:first-child,
+.metric-card .metric-label,
+.chart-legend {
+  color: #91a0af;
+}
+
+.selector-hint,
+.metric-card .metric-value span,
+.summary-vehicle p {
+  color: #6f7e8d;
+}
+
+.form-group [class*="control"] {
+  border-color: #35414c !important;
+  background: #171c22 !important;
+}
+
+.form-group [class*="singleValue"],
+.form-group [class*="input"] {
+  color: #edf3f8 !important;
+}
+
+.form-group [class*="placeholder"] {
+  color: #728090 !important;
+}
+
+.form-group [class*="indicatorSeparator"] {
+  background: #35414c !important;
+}
+
+.form-group [class*="dropdownIndicator"],
+.form-group [class*="clearIndicator"] {
+  color: #93a1ae !important;
+}
+
+.form-group [class*="menu"],
+.form-group [class*="option"] {
+  background: #171c22 !important;
+  border-color: #35414c !important;
+  color: #edf3f8 !important;
+}
+
+.form-group [class*="option"]:hover,
+.form-group [class*="option--is-focused"] {
+  background: #243242 !important;
+}
+
+.form-group [class*="option--is-selected"] {
+  background: #0878e5 !important;
+}
+
+.recommend-button {
+  background: linear-gradient(135deg, #0878e5, #0759b8);
+  box-shadow: 0 10px 28px rgba(0, 103, 216, 0.32);
+}
+
+.chart-card,
+.summary-card {
+  overflow: hidden;
+}
+
+.summary-vehicle,
+.summary-row {
+  border-color: #27313a;
+}
+
+.why-box {
+  background: rgba(0, 114, 217, 0.12);
+  border-color: rgba(75, 162, 255, 0.2);
+}
+
+.why-box p {
+  color: #a9b7c6;
+}
+
+.page-footer {
+  background: #0d1014;
+  border-top-color: #20262d;
+  color: #728090;
 }
